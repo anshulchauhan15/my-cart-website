@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script src="https://js.instamojo.com/v1/checkout.js"></script>
+    <script>
+      
+      function onOpenHandler () {
+        alert('Payments Modal is Opened');
+      }
+
+      function onCloseHandler () {
+        alert('Payments Modal is Closed');
+      }
+
+      function onPaymentSuccessHandler (response) {
+        alert('Payment Success');
+        console.log('Payment Success Response', response);
+      }
+
+      function onPaymentFailureHandler (response) {
+        alert('Payment Failure');
+        console.log('Payment Failure Response', response);
+      }
+      
+      Instamojo.configure({
+        handlers: {
+          onOpen: onOpenHandler,
+          onClose: onCloseHandler,
+          onSuccess: onPaymentSuccessHandler,
+          onFailure: onPaymentFailureHandler
+        }
+      });
+      
+      function onButtonClick() {
+        Instamojo.open('https://test.instamojo.com/@anshulchauhan1808');
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="onButtonClick()">
+     CLICK TO MAKE PAYMENT
+    </button>
+  </body>
+</html>
